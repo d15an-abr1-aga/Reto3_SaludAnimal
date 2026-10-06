@@ -1,0 +1,2218 @@
+<!DOCTYPE html>
+<html lang="es" class="light scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salud Animal 201203 | Reto 3 — Guía, Anexos, Ruta Individual y Rúbrica</title>
+<meta name="description" content="Documento académico íntegro del Reto 3 — Salud Animal 201203 UNAD ECAPMA">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+<!--
+  Nota: cdn.tailwindcss.com (Play CDN) está pensado para prototipado y entornos académicos.
+  Para producción real, instale Tailwind como plugin PostCSS o use Tailwind CLI:
+  https://tailwindcss.com/docs/installation
+-->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+    darkMode: 'class',
+    theme: {
+        extend: {
+            colors: {
+                unad: {
+                    teal: '#00445B',
+                    navy: '#01333F',
+                    green: '#035B3B',
+                    orange: '#D26714',
+                    base: '#EAEAEA',
+                    darkbg: '#0a1922'
+                }
+            },
+            fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                display: ['Montserrat', 'sans-serif'],
+            }
+        }
+    }
+}
+</script>
+
+<script>
+(function () {
+    try {
+        if (localStorage.getItem('unad-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+        }
+    } catch (e) {}
+})();
+</script>
+
+<style>
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+        background-color: #EAEAEA;
+        color: #01333F;
+        margin: 0; padding: 0;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        overflow-x: hidden;
+    }
+    .dark body { background-color: #0a1922; color: #EAEAEA; }
+
+    body::before {
+        content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+        background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
+        opacity: 0.035; mix-blend-mode: multiply;
+    }
+    .dark body::before { opacity: 0.018; mix-blend-mode: screen; }
+
+    .orb { position: fixed; border-radius: 50%; filter: blur(140px); z-index: 0; opacity: 0.55; pointer-events: none; }
+    .orb--navy   { background: #00445B; animation: float1 22s ease-in-out infinite; }
+    .orb--orange { background: #D26714; animation: float2 26s ease-in-out infinite reverse; opacity: 0.35; }
+    .orb--green  { background: #035B3B; animation: float1 30s ease-in-out infinite; opacity: 0.30; }
+    @keyframes float1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(5vw, 5vh) scale(1.1); } }
+    @keyframes float2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-5vw, -5vh) scale(1.1); } }
+
+    .sitenav {
+        position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+        width: 94%; max-width: 1500px; z-index: 50;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 0.75rem 1.5rem; border-radius: 1rem;
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 4px 20px rgba(1, 51, 63, 0.05);
+        transition: all 0.3s ease;
+    }
+    .dark .sitenav {
+        background: rgba(1, 51, 63, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .sitenav__brand {
+        display: flex; align-items: center; gap: 0.75rem;
+        font-family: 'Montserrat', sans-serif; font-weight: 700;
+        color: #01333F; text-decoration: none; cursor: pointer;
+        background: transparent; border: none; padding: 0;
+    }
+    .dark .sitenav__brand { color: #ffffff; }
+    .sitenav__brand small { display: block; font-size: 0.7rem; font-weight: 500; color: #00445B; }
+    .dark .sitenav__brand small { color: #D26714; }
+    .sitenav__logo {
+        width: 38px; height: 38px; border-radius: 10px;
+        background: linear-gradient(135deg, #00445B, #035B3B);
+        color: #ffffff; display: flex; align-items: center; justify-content: center;
+        font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem;
+    }
+    .sitenav__links {
+        display: flex; gap: 0.35rem; list-style: none; margin: 0; padding: 0;
+        font-size: 0.75rem; font-weight: 600;
+    }
+    .sitenav__links button {
+        background: transparent; border: none; cursor: pointer;
+        color: #01333F; font-family: 'Inter', sans-serif; font-weight: 600;
+        font-size: 0.75rem; padding: 0.45rem 0.85rem; border-radius: 0.6rem;
+        transition: all 0.2s; white-space: nowrap;
+    }
+    .dark .sitenav__links button { color: #EAEAEA; }
+    .sitenav__links button:hover { background: rgba(0,68,91,0.08); color: #D26714; }
+    .dark .sitenav__links button:hover { background: rgba(255,255,255,0.08); }
+    .sitenav__links button.active {
+        background: linear-gradient(135deg, #00445B, #035B3B);
+        color: #ffffff;
+    }
+    .theme-toggle {
+        background: rgba(0,0,0,0.05); border: none; cursor: pointer;
+        font-size: 1.1rem; display: flex; align-items: center; justify-content: center;
+        width: 36px; height: 36px; border-radius: 50%;
+        transition: background-color 0.2s;
+    }
+    .dark .theme-toggle { background: rgba(255,255,255,0.1); }
+
+    .view { display: none; animation: fadeIn 0.5s ease; }
+    .view.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    .glass-panel {
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 10px 40px rgba(1, 51, 63, 0.06);
+        border-radius: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    .dark .glass-panel {
+        background: rgba(1, 51, 63, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .hover-card { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s, border-color 0.3s; }
+    .hover-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px -8px rgba(0, 68, 91, 0.18); border-color: #D26714 !important; }
+
+    .home-card {
+        display: flex; flex-direction: column; gap: 1rem;
+        padding: 2rem 1.75rem;
+        border-radius: 1.4rem;
+        background: rgba(255,255,255,0.82);
+        border: 1px solid rgba(0,68,91,0.08);
+        border-top: 4px solid #00445B;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+        position: relative;
+        overflow: hidden;
+        font-family: inherit;
+    }
+    .dark .home-card {
+        background: rgba(1,51,63,0.55);
+        border-color: rgba(255,255,255,0.08);
+        border-top-color: #D26714;
+    }
+    .home-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -12px rgba(0,68,91,0.25);
+        border-top-color: #D26714;
+    }
+    .dark .home-card:hover { border-top-color: #EAEAEA; }
+    .home-card::after {
+        content: ''; position: absolute;
+        top: -40%; right: -10%;
+        width: 180px; height: 180px;
+        background: radial-gradient(circle, rgba(210,103,20,0.12) 0%, transparent 70%);
+        border-radius: 50%; pointer-events: none;
+    }
+    .home-card__num {
+        font-family: 'Montserrat', sans-serif; font-weight: 800;
+        font-size: 2.4rem; line-height: 1;
+        color: rgba(0,68,91,0.12);
+        position: absolute; top: 1.25rem; right: 1.5rem;
+    }
+    .dark .home-card__num { color: rgba(255,255,255,0.08); }
+    .home-card__icon {
+        width: 56px; height: 56px; border-radius: 1rem;
+        display: flex; align-items: center; justify-content: center;
+        background: linear-gradient(135deg, #00445B, #035B3B);
+        color: #fff;
+        box-shadow: 0 8px 20px -6px rgba(0,68,91,0.4);
+    }
+    .home-card__title {
+        font-family: 'Montserrat', sans-serif; font-weight: 700;
+        font-size: 1.15rem; color: #01333F; line-height: 1.3;
+        position: relative; z-index: 1;
+    }
+    .dark .home-card__title { color: #EAEAEA; }
+    .home-card__desc {
+        font-size: 0.83rem; color: #4b5563; line-height: 1.6;
+        position: relative; z-index: 1;
+    }
+    .dark .home-card__desc { color: rgba(234,234,234,0.72); }
+    .home-card__cta {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-size: 0.75rem; font-weight: 700;
+        color: #D26714; text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 0.25rem;
+        position: relative; z-index: 1;
+    }
+
+    .styled-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+    .styled-table th {
+        background-color: #00445B; color: white; padding: 12px;
+        font-weight: 600; text-transform: uppercase; font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+    .dark .styled-table th { background-color: #035B3B; }
+    .styled-table td {
+        padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.08);
+        vertical-align: top; color: #01333F; line-height: 1.55;
+    }
+    .dark .styled-table td { border-bottom: 1px solid rgba(255,255,255,0.08); color: #EAEAEA; }
+    .styled-table tr:hover td { background-color: rgba(0,68,91,0.04); }
+    .dark .styled-table tr:hover td { background-color: rgba(255,255,255,0.04); }
+    .styled-table tr:last-child td { border-bottom: none; }
+
+    .custom-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+    .custom-scroll::-webkit-scrollbar-track { background: rgba(0,68,91,0.05); border-radius: 10px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: rgba(0,68,91,0.25); border-radius: 10px; }
+    .dark .custom-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    .dark .custom-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); }
+
+    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(210,103,20,0.35), transparent); }
+
+    .icon-tile {
+        width: 44px; height: 44px;
+        border-radius: 0.9rem;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .hero-gradient {
+        background: linear-gradient(120deg, #01333F 0%, #00445B 45%, #D26714 100%);
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent;
+    }
+    .dark .hero-gradient {
+        background: linear-gradient(120deg, #EAEAEA 0%, #D26714 60%, #EAEAEA 100%);
+        -webkit-background-clip: text; background-clip: text;
+        color: transparent;
+    }
+
+    .pill {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        padding: 0.35rem 0.9rem; border-radius: 9999px;
+        font-size: 0.68rem; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.15em;
+    }
+    .pill--orange { background: rgba(210,103,20,0.12); color: #D26714; border: 1px solid rgba(210,103,20,0.3); }
+    .pill--teal   { background: rgba(0,68,91,0.10); color: #00445B; border: 1px solid rgba(0,68,91,0.25); }
+    .dark .pill--teal { background: rgba(255,255,255,0.06); color: #EAEAEA; border-color: rgba(255,255,255,0.15); }
+    .pill--green  { background: rgba(3,91,59,0.12); color: #035B3B; border: 1px solid rgba(3,91,59,0.3); }
+    .dark .pill--green { color: #6ee7b7; }
+
+    .paso-num {
+        flex-shrink: 0;
+        width: 3rem; height: 3rem;
+        border-radius: 9999px;
+        background: linear-gradient(135deg, #00445B, #035B3B);
+        color: #ffffff;
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800; font-size: 1.15rem;
+        box-shadow: 0 6px 18px -4px rgba(0,68,91,0.4);
+    }
+
+    .lista-tecnica li { position: relative; padding-left: 1.5rem; margin-bottom: 0.55rem; line-height: 1.6; }
+    .lista-tecnica li::before {
+        content: '';
+        position: absolute; left: 0; top: 0.6em;
+        width: 7px; height: 7px; border-radius: 50%;
+        background: #D26714;
+    }
+
+    .source-card {
+        position: relative;
+        padding: 1.6rem;
+        border-radius: 1.2rem;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(0,68,91,0.08);
+        border-top: 3px solid #00445B;
+        transition: all 0.3s ease;
+    }
+    .dark .source-card {
+        background: rgba(1,51,63,0.5);
+        border-color: rgba(255,255,255,0.08);
+        border-top-color: #D26714;
+    }
+    .source-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 35px -10px rgba(0,68,91,0.2);
+        border-top-color: #D26714;
+    }
+    .source-card__num {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800; font-size: 1.6rem;
+        color: #D26714; line-height: 1;
+        margin-bottom: 0.6rem;
+    }
+
+    .score-chip {
+        display: inline-flex; align-items: center; gap: 0.35rem;
+        background: linear-gradient(135deg, #D26714, #B25410);
+        color: #ffffff; font-family: 'Montserrat', sans-serif;
+        font-weight: 700; font-size: 0.72rem;
+        letter-spacing: 0.05em;
+        padding: 0.35rem 0.85rem; border-radius: 9999px;
+    }
+
+    .level-row { padding-left: 1.1rem; border-left: 3px solid; margin-top: 0.85rem; }
+    .level-row--high   { border-color: #035B3B; }
+    .level-row--mid    { border-color: #00445B; }
+    .level-row--low    { border-color: #b91c1c; }
+    .level-row--none   { border-color: rgba(120,120,120,0.4); }
+
+    .intro-paragraph {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #374151;
+        margin-bottom: 1.25rem;
+    }
+    .dark .intro-paragraph { color: rgba(234,234,234,0.85); }
+    .intro-paragraph strong { color: #00445B; font-weight: 700; }
+    .dark .intro-paragraph strong { color: #D26714; }
+
+    .idea-clave {
+        position: relative; overflow: hidden;
+        background: linear-gradient(135deg, #01333F 0%, #00445B 100%);
+        color: #ffffff;
+        padding: 1.1rem 1.5rem;
+        border-radius: 1rem;
+        margin-top: 1.1rem;
+        box-shadow: 0 10px 25px -12px rgba(1,51,63,0.55);
+    }
+    .idea-clave::before {
+        content: ''; position: absolute;
+        top: -40%; right: -8%;
+        width: 220px; height: 220px;
+        background: radial-gradient(circle, rgba(210,103,20,0.30) 0%, transparent 70%);
+        border-radius: 50%; pointer-events: none;
+    }
+    .idea-clave__label {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        font-size: 0.62rem; font-weight: 800;
+        letter-spacing: 0.18em;
+        color: #D26714;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        position: relative; z-index: 1;
+    }
+    .idea-clave__text {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700; font-size: 0.95rem;
+        line-height: 1.45;
+        position: relative; z-index: 1;
+    }
+
+    .feature-card {
+        display: flex; gap: 1rem; align-items: flex-start;
+        padding: 1.15rem 1.25rem;
+        background: rgba(255,255,255,0.9);
+        border: 1px solid rgba(0,68,91,0.08);
+        border-left: 4px solid #00445B;
+        border-radius: 1rem;
+        transition: all 0.3s ease;
+    }
+    .dark .feature-card {
+        background: rgba(1,51,63,0.55);
+        border-color: rgba(255,255,255,0.08);
+        border-left-color: #D26714;
+    }
+    .feature-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px -10px rgba(0,68,91,0.18);
+        border-left-color: #D26714;
+    }
+    .feature-card__icon {
+        width: 44px; height: 44px;
+        border-radius: 0.8rem;
+        background: rgba(0,68,91,0.08);
+        color: #00445B;
+        display: flex; align-items: center; justify-content: center;
+        flex-shrink: 0;
+    }
+    .dark .feature-card__icon {
+        background: rgba(255,255,255,0.08);
+        color: #D26714;
+    }
+    .feature-card__title {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700; font-size: 0.95rem;
+        color: #01333F; margin-bottom: 0.2rem; line-height: 1.3;
+    }
+    .dark .feature-card__title { color: #EAEAEA; }
+    .feature-card__desc {
+        font-size: 0.82rem; color: #4b5563; line-height: 1.5;
+    }
+    .dark .feature-card__desc { color: rgba(234,234,234,0.72); }
+
+    .back-btn {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        background: rgba(0,68,91,0.08);
+        color: #00445B;
+        border: 1px solid rgba(0,68,91,0.15);
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        font-size: 0.8rem; font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: 'Inter', sans-serif;
+    }
+    .dark .back-btn {
+        background: rgba(255,255,255,0.06);
+        color: #EAEAEA;
+        border-color: rgba(255,255,255,0.15);
+    }
+    .back-btn:hover {
+        background: #D26714;
+        color: #ffffff;
+        border-color: #D26714;
+        transform: translateX(-3px);
+    }
+
+    .site-footer {
+        position: relative;
+        z-index: 10;
+        margin-top: 4rem;
+        padding: 2.5rem 1.25rem;
+    }
+    .footer-card {
+        max-width: 1100px;
+        margin: 0 auto;
+        border-radius: 1.5rem;
+        padding: 2rem 2rem;
+        background: linear-gradient(135deg, #01333F 0%, #00445B 60%, #035B3B 100%);
+        color: #ffffff;
+        box-shadow: 0 20px 50px -20px rgba(1,51,63,0.55);
+        position: relative;
+        overflow: hidden;
+    }
+    .footer-card::before {
+        content: ''; position: absolute;
+        top: -30%; right: -10%;
+        width: 320px; height: 320px;
+        background: radial-gradient(circle, rgba(210,103,20,0.30) 0%, transparent 70%);
+        border-radius: 50%; pointer-events: none;
+    }
+    .footer-avatar {
+        width: 64px; height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #D26714, #B25410);
+        display: flex; align-items: center; justify-content: center;
+        font-family: 'Montserrat', sans-serif; font-weight: 800;
+        font-size: 1.4rem; color: #ffffff;
+        border: 3px solid rgba(255,255,255,0.25);
+        box-shadow: 0 8px 20px -6px rgba(210,103,20,0.5);
+        flex-shrink: 0;
+    }
+    .footer-role {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        background: rgba(210,103,20,0.18);
+        border: 1px solid rgba(210,103,20,0.35);
+        color: #ffb877;
+        font-size: 0.65rem; font-weight: 800;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        padding: 0.3rem 0.8rem; border-radius: 9999px;
+    }
+    .footer-mail {
+        display: inline-flex; align-items: center; gap: 0.5rem;
+        background: rgba(255,255,255,0.10);
+        border: 1px solid rgba(255,255,255,0.18);
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600; font-size: 0.85rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 9999px;
+        text-decoration: none;
+        transition: all 0.25s ease;
+    }
+    .footer-mail:hover {
+        background: rgba(255,255,255,0.20);
+        border-color: rgba(255,255,255,0.35);
+        transform: translateY(-2px);
+    }
+
+    .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+    @media (min-width: 768px) {
+        .feature-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 1023px) {
+        .sitenav__links { display: none; }
+        .sitenav__links.mobile-open {
+            display: flex; flex-direction: column;
+            position: absolute; top: 100%; left: 0; right: 0;
+            background: rgba(255,255,255,0.98);
+            padding: 1rem; border-radius: 1rem;
+            margin-top: 0.5rem;
+            box-shadow: 0 10px 30px rgba(1,51,63,0.15);
+        }
+        .dark .sitenav__links.mobile-open { background: rgba(1,51,63,0.98); }
+        .menu-toggle { display: flex !important; }
+    }
+    .menu-toggle {
+        display: none;
+        background: rgba(0,0,0,0.05); border: none; cursor: pointer;
+        width: 36px; height: 36px; border-radius: 50%;
+        align-items: center; justify-content: center;
+        font-size: 1.1rem;
+    }
+    .dark .menu-toggle { background: rgba(255,255,255,0.1); }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<!-- Ambient orbs -->
+<div class="orb orb--navy"   style="width:520px;height:520px;top:-160px;left:-160px;"></div>
+<div class="orb orb--orange" style="width:440px;height:440px;bottom:10vh;right:-120px;"></div>
+<div class="orb orb--green"  style="width:480px;height:480px;top:45vh;left:20vw;"></div>
+
+<!-- NAV -->
+<nav class="sitenav" id="main-nav">
+    <button class="sitenav__brand" data-view="home" type="button">
+        <div class="sitenav__logo">SA</div>
+        <div style="text-align:left;">
+            <span>Salud Animal</span>
+            <small>Código 201203 · Reto 3</small>
+        </div>
+    </button>
+
+    <ul class="sitenav__links" id="nav-links">
+        <li><button data-view="home" class="active" type="button">Inicio</button></li>
+        <li><button data-view="guia" type="button">Guía</button></li>
+        <li><button data-view="anexo1" type="button">Anexo 1</button></li>
+        <li><button data-view="anexo2" type="button">Anexo 2</button></li>
+        <li><button data-view="rubrica" type="button">Rúbrica</button></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+        <button class="menu-toggle" id="menu-btn" type="button" aria-label="Menú">☰</button>
+        <button class="theme-toggle" id="theme-btn" type="button" aria-label="Cambiar tema">🌙</button>
+    </div>
+</nav>
+
+<main id="top" class="relative z-10 pt-32 pb-24">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+
+        <!-- ============================================================
+             VIEW: HOME
+        ============================================================= -->
+        <section id="view-home" class="view active">
+
+            <div class="glass-panel p-8 md:p-14 text-center relative overflow-hidden mb-12">
+                <div class="absolute -top-20 -right-20 w-72 h-72 bg-unad-orange/10 rounded-full blur-3xl"></div>
+                <div class="absolute -bottom-24 -left-20 w-80 h-80 bg-unad-teal/10 rounded-full blur-3xl"></div>
+
+                <div class="relative z-10">
+                    <span class="pill pill--orange mb-6">
+                        <span class="iconify" data-icon="lucide:layers" data-width="14"></span>
+                        UNAD · ECAPMA · Zootecnia
+                    </span>
+
+                    <h1 class="font-display font-extrabold text-4xl md:text-6xl lg:text-7xl leading-[1.05] mb-6">
+                        Reto 3 <br>
+                        <span class="hero-gradient">Plan Integral de Gestión Sanitaria</span>
+                    </h1>
+
+                    <p class="text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                        Diseño del plan integral de gestión sanitaria y bienestar animal. Documento íntegro: guía de aprendizaje, anexos operativos, ruta individual excepcional y rúbrica de evaluación.
+                    </p>
+
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <span class="pill pill--teal">
+                            <span class="iconify" data-icon="lucide:award" data-width="14"></span>
+                            100 puntos
+                        </span>
+                        <span class="pill pill--green">
+                            <span class="iconify" data-icon="lucide:users" data-width="14"></span>
+                            Actividad colaborativa
+                        </span>
+                        <span class="pill pill--orange">
+                            <span class="iconify" data-icon="lucide:calendar" data-width="14"></span>
+                            06 oct – 13 nov 2026
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-8">
+                <span class="pill pill--teal mb-4">Navegación por pestañas</span>
+                <h2 class="font-display font-extrabold text-3xl md:text-4xl mb-3">Seleccione un documento</h2>
+                <p class="text-sm text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                    Cada sección abre en una pestaña independiente. Use el botón "Volver al inicio" para regresar a este panel.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <button class="home-card" data-view="guia" type="button">
+                    <span class="home-card__num">01</span>
+                    <div class="home-card__icon">
+                        <span class="iconify" data-icon="lucide:book-open" data-width="28"></span>
+                    </div>
+                    <div>
+                        <h3 class="home-card__title">Guía de Aprendizaje Reto 3</h3>
+                        <p class="home-card__desc">Datos del reto, descripción detallada, fuentes obligatorias, pasos (1 a 13), evidencias, criterios DUA y situaciones académicas.</p>
+                    </div>
+                    <span class="home-card__cta">
+                        Abrir sección
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                    </span>
+                </button>
+
+                <button class="home-card" data-view="anexo1" type="button">
+                    <span class="home-card__num">02</span>
+                    <div class="home-card__icon">
+                        <span class="iconify" data-icon="lucide:file-plus" data-width="28"></span>
+                    </div>
+                    <div>
+                        <h3 class="home-card__title">Anexo 1 — Plantilla Plan Integral</h3>
+                        <p class="home-card__desc">Selección del sistema productivo, roles obligatorios, matriz del plan, guion audiovisual, infografía bilingüe, indicadores, estructura del documento y checklist DUA.</p>
+                    </div>
+                    <span class="home-card__cta">
+                        Abrir sección
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                    </span>
+                </button>
+
+                <button class="home-card" data-view="anexo2" type="button">
+                    <span class="home-card__num">03</span>
+                    <div class="home-card__icon">
+                        <span class="iconify" data-icon="lucide:user-check" data-width="28"></span>
+                    </div>
+                    <div>
+                        <h3 class="home-card__title">Anexo 2 — Ruta Individual Excepcional</h3>
+                        <p class="home-card__desc">Ruta por contingencia académica justificada: cuándo aplica, condiciones, entregable individual equivalente y adaptación de la rúbrica.</p>
+                    </div>
+                    <span class="home-card__cta">
+                        Abrir sección
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                    </span>
+                </button>
+
+                <button class="home-card" data-view="rubrica" type="button">
+                    <span class="home-card__num">04</span>
+                    <div class="home-card__icon">
+                        <span class="iconify" data-icon="lucide:scale" data-width="28"></span>
+                    </div>
+                    <div>
+                        <h3 class="home-card__title">Rúbrica de Evaluación Reto 3</h3>
+                        <p class="home-card__desc">Resultado de aprendizaje, cinco criterios evaluativos (15, 20, 40, 15 y 10 pts) con sus niveles alto, medio, bajo y no presentado.</p>
+                    </div>
+                    <span class="home-card__cta">
+                        Abrir sección
+                        <span class="iconify" data-icon="lucide:arrow-right" data-width="14"></span>
+                    </span>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- ============================================================
+             VIEW: GUÍA DE APRENDIZAJE
+        ============================================================= -->
+        <section id="view-guia" class="view">
+            <button class="back-btn mb-6" data-view="home" type="button">
+                <span class="iconify" data-icon="lucide:arrow-left" data-width="14"></span>
+                Volver al inicio
+            </button>
+
+            <div class="text-center mb-12">
+                <span class="pill pill--teal mb-4">Documento 1</span>
+                <h2 class="font-display font-extrabold text-3xl md:text-5xl mb-4">
+                    Guía de Aprendizaje <span class="text-unad-orange">Reto 3</span>
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Diseño del plan integral de gestión sanitaria y bienestar animal. Curso: Salud Animal. Código: 201203.
+                </p>
+            </div>
+
+            <!-- 1. Datos del Reto -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:clipboard-list" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        <span class="text-unad-orange">1.</span> Datos del Reto
+                    </h3>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[640px]">
+                            <thead>
+                                <tr>
+                                    <th style="width:40%">Aspecto</th>
+                                    <th>Descripción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-semibold">1. Tipo de actividad</td><td>Colaborativa</td></tr>
+                                <tr><td class="font-semibold">2. Momento de la evaluación</td><td>Intermedio</td></tr>
+                                <tr><td class="font-semibold">3. Unidad gestora</td><td>Escuela de Ciencias Agrícolas Pecuarias y del Medio Ambiente ECAPMA</td></tr>
+                                <tr><td class="font-semibold">4. Puntaje del Reto</td><td><span class="score-chip"><span class="iconify" data-icon="lucide:star" data-width="12"></span> 100 puntos</span></td></tr>
+                                <tr><td class="font-semibold">5. La actividad inicia el:</td><td>Martes, 06 de octubre de 2026</td></tr>
+                                <tr><td class="font-semibold">6. La actividad finaliza el:</td><td>Viernes, 13 de noviembre de 2026</td></tr>
+                                <tr><td class="font-semibold">7. Horas de trabajo independiente</td><td>15 horas</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Descripción detallada -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-orange/10 text-unad-orange">
+                        <span class="iconify" data-icon="lucide:file-text" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        <span class="text-unad-orange">2.</span> Descripción detallada de la actividad
+                    </h3>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8 mb-6 border-l-4 border-unad-teal">
+                    <div class="flex items-start gap-4">
+                        <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white shrink-0">
+                            <span class="iconify" data-icon="lucide:target" data-width="24"></span>
+                        </div>
+                        <div>
+                            <p class="text-[11px] font-bold uppercase tracking-[0.15em] text-unad-teal dark:text-unad-orange mb-2">Resultado de aprendizaje</p>
+                            <p class="text-sm md:text-base leading-relaxed text-gray-800 dark:text-gray-200">
+                                Diseñar estrategias de gestión sanitaria y bienestar animal en una unidad productiva, integrando bioseguridad, seguimiento sanitario, tecnologías emergentes y recomendaciones de mejora, mediante un documento técnico estructurado que organice hallazgos, propuestas y criterios de implementación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8 mb-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="iconify text-unad-orange" data-icon="lucide:list-checks" data-width="22"></span>
+                        <p class="font-display font-bold text-lg">La actividad consiste en</p>
+                    </div>
+                    <p class="intro-paragraph">
+                        El Reto 3, denominado <strong>Diseño del plan integral de gestión sanitaria y bienestar animal</strong>, consiste en elaborar de manera colaborativa un plan integral de gestión sanitaria y bienestar animal para una unidad productiva.
+                    </p>
+                    <p class="intro-paragraph">
+                        El grupo debe retomar los fundamentos revisados en el Reto 1 y los hallazgos de análisis sanitario construidos en el Reto 2, para proponer acciones concretas de prevención, bioseguridad, bienestar, vigilancia, uso de tecnologías emergentes, adaptación climática, inocuidad, uso prudente de medicamentos y seguimiento por indicadores.
+                    </p>
+                    <p class="intro-paragraph">
+                        La evidencia principal será: un documento técnico grupal del plan integral de gestión sanitaria y bienestar animal, presentación ejecutiva accesible con infografía bilingüe y sustentación audiovisual breve. La presentación sintetiza visualmente el plan y la sustentación permite verificar la comprensión y participación de cada integrante. <strong>Ninguna de estas piezas reemplaza el documento técnico; todas deben ser coherentes entre sí.</strong>
+                    </p>
+                    <p class="intro-paragraph">
+                        El alcance del reto corresponde a la formación en Zootecnia y Tecnología en Producción Animal: el estudiante <strong>no emite diagnósticos clínicos definitivos ni prescribe tratamientos médicos</strong>. Su responsabilidad académica es formular medidas preventivas, de manejo, bioseguridad, bienestar, seguimiento e inocuidad, reconociendo cuándo se requiere articulación con el médico veterinario, el responsable sanitario o la autoridad competente.
+                    </p>
+
+                    <div class="idea-clave">
+                        <p class="idea-clave__label">
+                            <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span>
+                            Idea clave
+                        </p>
+                        <p class="idea-clave__text">
+                            Plan preventivo desde el rol zootécnico: sin diagnóstico clínico definitivo, sin prescripción médica.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8 mb-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="iconify text-unad-teal dark:text-unad-orange" data-icon="lucide:video" data-width="22"></span>
+                        <p class="font-display font-bold text-lg">Sobre la sustentación audiovisual</p>
+                    </div>
+                    <p class="intro-paragraph">
+                        La sustentación en video sí se solicita en este reto como evidencia complementaria, porque permite verificar que cada integrante comprende el componente que desarrolló y porque fortalece la trazabilidad del trabajo colaborativo.
+                    </p>
+                    <ul class="lista-tecnica text-sm text-gray-700 dark:text-gray-300">
+                        <li>El video debe durar entre <strong>5 y 7 minutos</strong>.</li>
+                        <li>Cada estudiante interviene entre <strong>45 y 60 segundos</strong>.</li>
+                        <li>Cada estudiante explica su componente del plan y menciona una fuente utilizada.</li>
+                        <li>El grupo debe incluir el enlace del video en el documento final.</li>
+                        <li>Si existe una barrera de conectividad, visual, auditiva o técnica, se acepta una alternativa equivalente: audio tipo podcast con transcripción, narración dentro de la presentación o sustentación escrita ampliada aprobada por el tutor.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="iconify text-unad-orange" data-icon="lucide:languages" data-width="22"></span>
+                        <p class="font-display font-bold text-lg">Componente de segunda lengua aplicado al Reto 3</p>
+                    </div>
+                    <p class="intro-paragraph">
+                        Con el fin de promover el uso académico de una segunda lengua, cada grupo deberá incluir una <strong>infografía bilingüe</strong> dentro de la presentación ejecutiva del Reto 3. Esta infografía hará parte de las cinco infografías solicitadas y deberá relacionarse con el componente de bienestar animal en la producción primaria pecuaria.
+                    </p>
+                    <p class="intro-paragraph">
+                        La infografía bilingüe debe construirse a partir de la <strong>Resolución ICA 16409 de 2024</strong>, fuente oficial en español sobre certificación en bienestar animal en la producción primaria pecuaria. El grupo deberá leer la fuente, seleccionar una idea técnica relevante y redactar en inglés una explicación breve con palabras propias. <strong>No se permite copiar y pegar textos de fuentes en inglés ni realizar traducciones literales extensas mediante herramientas automáticas.</strong>
+                    </p>
+                    <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-3">La infografía bilingüe debe contener:</p>
+                    <ol class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                        <li class="flex gap-3"><span class="text-unad-orange font-bold">1.</span><span>Título técnico en inglés.</span></li>
+                        <li class="flex gap-3"><span class="text-unad-orange font-bold">2.</span><span>Definición o explicación breve en inglés, entre 40 y 60 palabras, redactada por el grupo.</span></li>
+                        <li class="flex gap-3"><span class="text-unad-orange font-bold">3.</span><span>Glosario de cinco términos técnicos en inglés con su equivalente en español.</span></li>
+                        <li class="flex gap-3"><span class="text-unad-orange font-bold">4.</span><span>Dos frases en español que expliquen cómo se aplica el concepto al sistema productivo trabajado.</span></li>
+                        <li class="flex gap-3"><span class="text-unad-orange font-bold">5.</span><span>Fuente base en español citada en formato APA 7.</span></li>
+                    </ol>
+                    <p class="text-xs text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">
+                        Para evidenciar elaboración propia, el grupo deberá incluir una <strong>ficha breve de construcción lingüística</strong> en el foro o en el anexo del reto, con tres elementos: idea principal tomada de la fuente en español, versión redactada por el grupo en inglés y glosario técnico utilizado.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. Fuentes obligatorias -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="icon-tile bg-unad-green/10 text-unad-green">
+                        <span class="iconify" data-icon="lucide:book-open" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        <span class="text-unad-orange">3.</span> Fuentes obligatorias para el diseño del plan integral
+                    </h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    Cada grupo debe consultar las fuentes obligatorias relacionadas a continuación. Estas fuentes deben emplearse para sustentar el diseño del plan integral de gestión sanitaria y bienestar animal, incluyendo bioseguridad, enfoque One Health, bienestar animal, tecnologías emergentes, cambio climático, inocuidad, uso responsable de medicamentos y accesibilidad de los entregables.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="source-card">
+                        <div class="source-card__num">01</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Instituto Colombiano Agropecuario. (2024). <em>Resolución 16409 de 2024: Por la cual se establecen los requisitos para la certificación en Bienestar Animal en la producción primaria pecuaria y se dictan disposiciones relacionadas con las actividades de Inspección, Vigilancia y Control en Bienestar Animal</em>. ICA. https://www.ica.gov.co/normatividad/normas-ica/resoluciones-oficinas-nacionales/2024/2024r00016409
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de lectura
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte los apartados relacionados con bienestar animal en producción primaria pecuaria, certificación, inspección, vigilancia y control. Esta fuente es obligatoria para construir la infografía bilingüe del Reto 3. A partir de la lectura, seleccione una idea técnica relevante, explíquela en inglés con palabras propias entre 40 y 60 palabras y elabore un glosario de cinco términos técnicos inglés-español. No copie fragmentos ni realice traducciones literales extensas.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">02</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Milazzo, A., Liu, J., Multani, P., Steele, S., Hoon, E., &amp; Chaber, A. L. (2025). One Health implementation: A systematic scoping review using the Quadripartite One Health Joint Plan of Action. <em>One Health, 20</em>, Article 101008. https://doi.org/10.1016/j.onehlt.2025.101008
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de lectura
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise el artículo e identifique cómo se implementa el enfoque One Health desde la articulación entre salud animal, salud humana, ambiente, comunidad e instituciones. Use esta fuente para sustentar el componente Una Salud del plan integral, especialmente en las acciones de prevención, inocuidad, comunicación del riesgo y gestión sanitaria propuestas para el sistema productivo trabajado.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">03</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Papakonstantinou, G. I., Voulgarakis, N., Terzidou, G., Fotos, L., Giamouri, E., &amp; Papatsiros, V. G. (2024). Precision livestock farming technology: Applications and challenges of animal welfare and climate change. <em>Agriculture, 14</em>(4), Article 620. https://doi.org/10.3390/agriculture14040620
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de lectura
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte el artículo para identificar tecnologías emergentes aplicadas a la producción animal, tales como sensores, registros digitales, monitoreo del bienestar, gestión de datos y toma de decisiones preventivas. Relacione estos elementos con el componente de indicadores, seguimiento sanitario, adaptación climática y tecnologías del plan integral.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">04</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Linstädt, J., Thöne-Reineke, C., &amp; Merle, R. (2024). Animal-based welfare indicators for dairy cows and their validity and practicality: A systematic review of the existing literature. <em>Frontiers in Veterinary Science, 11</em>, Article 1429097. https://doi.org/10.3389/fvets.2024.1429097
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de lectura
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise los indicadores observables de bienestar animal propuestos en el artículo. Seleccione aquellos que sean prácticos, válidos y adaptables al sistema productivo trabajado. Relacione estos indicadores con confort, comportamiento, manejo, salud, productividad y seguimiento del plan integral.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">05</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Anadón, A., Bridges, J., &amp; Tarazona, J. V. (2025). Sustainability of medicines and biocides: A One Health approach. <em>Environment International, 203</em>, Article 109768. https://doi.org/10.1016/j.envint.2025.109768
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de lectura
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise el artículo para sustentar acciones relacionadas con uso responsable de medicamentos y biocidas, residuos, tiempos de retiro, inocuidad, salud pública y prevención de riesgos asociados a resistencia antimicrobiana. Use esta fuente para fortalecer las acciones preventivas del plan integral desde el enfoque One Health.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">06</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            de Souza, W. M., &amp; Weaver, S. C. (2024). Effects of climate change and human activities on vector-borne diseases. <em>Nature Reviews Microbiology, 22</em>, 476-491. https://doi.org/10.1038/s41579-024-01026-0
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de lectura
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte la relación entre cambio climático, actividades humanas, vectores, enfermedades emergentes y riesgos sanitarios. Use esta fuente para sustentar acciones de adaptación climática y prevención de enfermedades transmitidas por vectores dentro del plan integral.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">07</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            CAST. (2024). <em>Universal Design for Learning Guidelines version 3.0</em>. https://udlguidelines.cast.org/
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Guía de revisión
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise los criterios del Diseño Universal para el Aprendizaje y aplíquelos en el documento técnico, las infografías, la presentación ejecutiva y el video de sustentación. Tenga en cuenta la claridad, organización, alternativas de representación, facilidad de comprensión y acceso a la información.</p>
+                        </div>
+                    </div>
+
+                    <div class="source-card">
+                        <div class="source-card__num">08</div>
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            World Wide Web Consortium. (2023). <em>Web Content Accessibility Guidelines (WCAG) 2.2</em>. https://www.w3.org/TR/WCAG22/
+                        </p>
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-3">
+                            <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2 flex items-center gap-1.5">
+                                <span class="iconify" data-icon="lucide:lightbulb" data-width="12"></span> Uso mínimo esperado
+                            </p>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte los criterios básicos de accesibilidad digital aplicables a documentos, presentaciones, infografías y contenidos audiovisuales. Aplique contraste adecuado, textos alternativos para imágenes, estructura clara de títulos, enlaces comprensibles, transcripción o apoyo textual para contenidos audiovisuales y legibilidad general.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 mt-6 border-l-4 border-unad-orange">
+                    <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+                        <strong class="text-unad-orange">Nota.</strong> Los artículos científicos deben buscarse por título o DOI en la e-Biblioteca UNAD, Scopus, ScienceDirect, EBSCOhost, Veterinary Source, Frontiers, Nature o bases equivalentes disponibles para la Universidad. Las fuentes institucionales deben consultarse en sus sitios oficiales. La Resolución ICA 16409 de 2024 se usa como fuente base en español para la infografía bilingüe. Las fuentes en inglés se mantienen como apoyo conceptual y terminológico para el plan integral, pero la explicación en inglés de la infografía debe ser redactada por el grupo con palabras propias; no se permite copiar textos ni realizar traducciones literales extensas mediante herramientas automáticas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Recursos complementarios -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:library" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        Recursos complementarios recomendados
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="source-card">
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Instituto Colombiano Agropecuario. (2023). <em>Resolución 16023 de 2023: Por la cual se modifica la Resolución 115708 de 2021</em>. ICA. https://www.ica.gov.co/normatividad/normas-ica/resoluciones-oficinas-nacionales/2023/2023r00016023
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte esta resolución cuando el plan integral incluya acciones relacionadas con autorización sanitaria, inocuidad en predios productores, buenas prácticas, control de riesgos y producción primaria de carne o leche.</p>
+                    </div>
+
+                    <div class="source-card">
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Instituto Colombiano Agropecuario. (2024). <em>Resolución 8940 de 2024</em>. ICA. https://www.ica.gov.co/normatividad/normas-ica/resoluciones-oficinas-nacionales/2024/2024r00008940
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise los aspectos relacionados con movilización animal, trazabilidad, ingreso y salida de animales, y requisitos para la expedición de la Guía Sanitaria de Movilización Interna —GSMI—.</p>
+                    </div>
+
+                    <div class="source-card">
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Food and Agriculture Organization of the United Nations. (2025). <em>Progressive Management Pathway for Terrestrial Animal Biosecurity</em>. FAO. https://openknowledge.fao.org/items/967a68ab-74e3-4b94-b9e9-4cbd58218440
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise este recurso para sustentar medidas de bioseguridad externa, interna y personal en sistemas productivos pecuarios. Identifique acciones de control de ingreso, limpieza, desinfección, aislamiento, movilización animal y mejora progresiva de riesgos sanitarios en cadenas pecuarias.</p>
+                    </div>
+
+                    <div class="source-card">
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            World Organisation for Animal Health. (2026). <em>The State of the World's Animal Health 2026</em>. WOAH. https://www.woah.org/en/document/the-state-of-the-worlds-animal-health-2026/
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte el informe para ubicar el plan integral dentro del panorama global de la sanidad animal. Centre la revisión en vigilancia, prevención, enfermedades emergentes o transfronterizas, notificación sanitaria y relevancia de la inversión en salud animal.</p>
+                    </div>
+
+                    <div class="source-card md:col-span-2">
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Prates, J. A. M., et al. (2025). Heat stress effects on animal health and performance in monogastric livestock: Physiological responses, molecular mechanisms, and management interventions. <em>Veterinary Sciences, 12</em>(5), Article 429. https://doi.org/10.3390/vetsci12050429
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Consulte este artículo para identificar los efectos del estrés térmico sobre la salud, el desempeño productivo y el bienestar en animales monogástricos. Use esta fuente cuando el plan integral incluya acciones de adaptación climática, manejo ambiental, prevención de pérdidas productivas o control de riesgos en aves y porcinos.</p>
+                    </div>
+
+                    <div class="source-card md:col-span-2">
+                        <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 mb-4">
+                            Zambrano, J. A. (2022). Relación e interacción entre los sistemas de producción animal (SPA) y el ambiente. <em>Documentos de Trabajo ECAPMA, 6</em>(1), 75-89. Sello Editorial UNAD. https://doi.org/10.22490/ECAPMA.5817
+                        </p>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Revise el artículo para comprender la relación entre los sistemas de producción animal y el ambiente. Use esta fuente para sustentar acciones del plan integral relacionadas con sostenibilidad, mitigación de impactos ambientales, adaptación al cambio climático y diseño de sistemas productivos pecuarios más responsables con el entorno.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recursos de apoyo -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-orange/10 text-unad-orange">
+                        <span class="iconify" data-icon="lucide:package" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Recursos de apoyo</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="glass-panel hover-card p-5">
+                        <span class="iconify text-unad-orange mb-3" data-icon="lucide:file-plus" data-width="24"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-2">Anexo 1</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Plantilla del plan integral de gestión sanitaria y bienestar animal.</p>
+                    </div>
+                    <div class="glass-panel hover-card p-5">
+                        <span class="iconify text-unad-orange mb-3" data-icon="lucide:messages-square" data-width="24"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-2">Foro colaborativo</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Espacio obligatorio para acuerdos, aportes individuales, revisión cruzada y evidencia de participación.</p>
+                    </div>
+                    <div class="glass-panel hover-card p-5">
+                        <span class="iconify text-unad-orange mb-3" data-icon="lucide:file-type" data-width="24"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-2">Editores colaborativos</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Word, Google Docs institucional, Microsoft Teams o equivalente aprobado por el tutor.</p>
+                    </div>
+                    <div class="glass-panel hover-card p-5">
+                        <span class="iconify text-unad-orange mb-3" data-icon="lucide:presentation" data-width="24"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-2">Presentación ejecutiva</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Canva, Genially, PowerPoint, Google Slides u otra que permita contraste adecuado, texto alternativo y enlace funcional.</p>
+                    </div>
+                    <div class="glass-panel hover-card p-5">
+                        <span class="iconify text-unad-orange mb-3" data-icon="lucide:video" data-width="24"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-2">Herramienta de video/audio</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Grabación en Teams, Zoom, celular, PowerPoint narrado, Canva video o plataforma equivalente con enlace accesible.</p>
+                    </div>
+                    <div class="glass-panel hover-card p-5">
+                        <span class="iconify text-unad-orange mb-3" data-icon="lucide:quote" data-width="24"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-2">Normas APA 7</p>
+                        <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed">Citas, referencias y títulos de tablas conforme a APA 7. Verifique correspondencia entre citas y referencias.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pasos -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="icon-tile bg-unad-orange/10 text-unad-orange">
+                        <span class="iconify" data-icon="lucide:route" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        Pasos para el desarrollo de la <span class="text-unad-orange">actividad</span>
+                    </h3>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">1</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Revise la guía, el anexo y la rúbrica</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Presentación ejecutiva y sustentación audiovisual. Producto verificable: mensaje individual de inicio.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">2</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Confirme el sistema productivo</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El grupo debe trabajar preferiblemente el mismo sistema productivo usado en el Reto 2 para mantener continuidad. Si cambia de sistema, debe justificarlo en máximo 120 palabras. Producto verificable: acuerdo del grupo en foro.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">3</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Asigne roles para un equipo de cinco estudiantes</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Cada integrante asume un componente: 1) diagnóstico y priorización sanitaria; 2) bioseguridad y sanidad preventiva; 3) bienestar, manejo y productividad; 4) indicadores, registros y tecnologías emergentes; 5) One Health, cambio climático, inocuidad, APA y accesibilidad. Producto verificable: tabla de roles diligenciada en la primera semana.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">4</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Consulte fuentes obligatorias según el rol</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Cada integrante revisa al menos dos fuentes obligatorias relacionadas con su componente. Una de las fuentes debe estar en inglés y debe servir para sustentar una acción, indicador o decisión del plan. Para la infografía bilingüe, el grupo usará como fuente base en español la Resolución ICA 16409 de 2024 y redactará en inglés una explicación breve con palabras propias, apoyándose en fuentes en inglés solo para revisar vocabulario técnico, no para copiar texto.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">5</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Redacte el componente técnico asignado</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Cada estudiante propone mínimo dos acciones para su componente. Cada acción debe tener responsable, frecuencia, indicador, meta y fuente. Además, el integrante responsable del componente de bienestar animal, con apoyo del grupo, lidera la construcción de la infografía bilingüe a partir de la Resolución ICA 16409 de 2024. Producto verificable: borrador individual publicado en foro y avance de la ficha de construcción lingüística.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">6</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Elabore la infografía bilingüe de transferencia técnica</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El grupo selecciona una idea técnica de la Resolución ICA 16409 de 2024 relacionada con bienestar animal en producción primaria pecuaria. A partir de esa idea, redacta en inglés una explicación breve de 40 a 60 palabras con palabras propias, construye un glosario de cinco términos técnicos inglés-español y explica en español cómo ese concepto se aplica al sistema productivo trabajado. Esta infografía se integra a la presentación ejecutiva y debe citar la fuente en APA 7.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">7</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Realice revisión cruzada</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Cada estudiante comenta el componente de un compañero. Debe señalar una fortaleza, una mejora técnica y una corrección de fuente, indicador o redacción. Producto verificable: comentario de revisión publicado antes de la integración final.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">8</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Integre el plan en la matriz general</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El equipo consolida mínimo diez acciones, dos por cada componente. Debe eliminar repeticiones y verificar que cada acción tenga indicador. Producto verificable: matriz preliminar publicada en foro.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">9</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Redacte el documento técnico</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El documento debe incluir portada, introducción, descripción del sistema, síntesis del problema, plan integral, ruta de implementación, indicadores, enlace a la presentación, enlace al video, conclusiones y referencias. Extensión sugerida: 10 a 14 páginas sin contar portada ni anexos.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">10</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Diseñe la presentación ejecutiva accesible</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El grupo elabora cinco infografías, una por componente. Una de ellas debe ser una infografía bilingüe de transferencia técnica sobre bienestar animal en producción primaria pecuaria, construida a partir de la Resolución ICA 16409 de 2024. Esta infografía debe contener: título en inglés, explicación propia en inglés de 40 a 60 palabras, glosario de cinco términos inglés-español, dos frases en español de aplicación al sistema productivo y referencia en APA 7. Todas las infografías deben incluir título, problema, acción priorizada, indicador y fuente breve, además de texto alternativo, contraste adecuado, navegación clara y versión descargable.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">11</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Grabe la sustentación audiovisual</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El video debe durar entre 5 y 7 minutos. Todos los integrantes participan. Cada uno explica su componente, una acción priorizada, un indicador y una fuente usada. Se debe anexar guion o transcripción.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start">
+                        <div class="paso-num">12</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Verifique accesibilidad, APA y coherencia</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El grupo aplica la lista de chequeo del anexo: fuentes obligatorias, citas, tablas en APA, enlaces, video, texto alternativo, contraste, ortografía, roles y participación. Producto verificable: checklist diligenciado.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel hover-card p-6 flex gap-5 items-start border-l-4 border-unad-orange">
+                        <div class="paso-num">13</div>
+                        <div>
+                            <h4 class="font-display font-bold text-lg md:text-xl text-unad-navy dark:text-white mb-2">Entregue el producto final</h4>
+                            <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Un vocero sube al entorno de evaluación un único archivo Word o PDF nombrado <strong>Reto3_201203_GrupoXX</strong>. El archivo debe contener enlaces funcionales a la presentación y al video. Solo se incluyen como autores quienes hayan dejado evidencia oportuna en el foro.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evidencias -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:clipboard-check" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        <span class="text-unad-orange">4.</span> Indicaciones para el desarrollo y entrega de las evidencias
+                    </h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    Las evidencias de aprendizaje son las acciones, productos o procesos observables que se realizan y/o entregan para manifestar las capacidades, habilidades, aptitudes y actitudes adquiridas, y que, a su vez, servirán al docente para verificar y evaluar su desempeño.
+                </p>
+
+                <div class="mb-4">
+                    <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-3">Evidencias a desarrollar independientemente</p>
+                </div>
+                <ul class="lista-tecnica text-sm text-gray-700 dark:text-gray-300 mb-8">
+                    <li>Mensaje inicial de comprensión del reto y aceptación del rol asignado.</li>
+                    <li>Ficha de lectura individual con mínimo dos fuentes obligatorias del syllabus, una de ellas en inglés.</li>
+                    <li>Ficha breve de construcción lingüística para la infografía bilingüe: idea principal tomada de la Resolución ICA 16409 de 2024, versión redactada por el grupo en inglés, glosario técnico inglés-español y fuente en APA 7.</li>
+                    <li>Borrador individual del componente técnico asignado, con mínimo dos acciones, indicadores y citas.</li>
+                    <li>Comentario de revisión cruzada al componente de un compañero.</li>
+                    <li>Participación individual en la sustentación audiovisual.</li>
+                </ul>
+
+                <div class="mb-4">
+                    <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-3">Evidencias a desarrollar colaborativamente</p>
+                </div>
+                <ul class="lista-tecnica text-sm text-gray-700 dark:text-gray-300 mb-8">
+                    <li>Matriz grupal del plan integral de gestión sanitaria y bienestar animal.</li>
+                    <li>Documento técnico grupal en Word o PDF.</li>
+                    <li>Presentación ejecutiva accesible con cinco infografías, incluida una infografía bilingüe de transferencia técnica sobre bienestar animal en producción primaria pecuaria.</li>
+                    <li>Video de sustentación grupal de 5 a 7 minutos, con guion o transcripción.</li>
+                    <li>Referencias en APA 7 y lista de chequeo DUA/accesibilidad diligenciada.</li>
+                </ul>
+
+                <div class="glass-panel p-6 md:p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="iconify text-unad-orange" data-icon="lucide:pencil" data-width="22"></span>
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold">Orientaciones para el desarrollo y entrega</p>
+                    </div>
+                    <ul class="lista-tecnica text-sm text-gray-700 dark:text-gray-300">
+                        <li>Un solo integrante, elegido como vocero, entrega el producto final en el entorno indicado por el tutor.</li>
+                        <li>El archivo debe llamarse <strong>Reto3_201203_GrupoXX</strong>.</li>
+                        <li>La portada debe incluir nombres y apellidos completos, códigos, grupo colaborativo, CEAD, tutor y fecha.</li>
+                        <li>Los enlaces de la presentación y del video deben abrir correctamente desde otro equipo o navegador.</li>
+                        <li>Solo deben aparecer como autores quienes participaron durante el desarrollo de la actividad y dejaron evidencia en el foro.</li>
+                        <li>Los aportes publicados únicamente el día de entrega no garantizan reconocimiento de autoría académica en el producto grupal.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- DUA -->
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-green/10 text-unad-green">
+                        <span class="iconify" data-icon="lucide:universal-access" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        Criterios <span class="text-unad-orange">DUA y accesibilidad para el Reto 3</span>
+                    </h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    El diseño del documento, la presentación y el video debe atender principios de Diseño Universal para el Aprendizaje y accesibilidad digital. Por ello, el grupo debe cuidar que los productos sean perceptibles, operables, comprensibles y reutilizables.
+                </p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:heading" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Lenguaje claro</p>
+                            <p class="feature-card__desc">Usar lenguaje claro, frases breves y organización por subtítulos.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:palette" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">No depender solo del color</p>
+                            <p class="feature-card__desc">No depender únicamente del color para comunicar información.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:image" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Texto alternativo</p>
+                            <p class="feature-card__desc">Agregar texto alternativo o explicación equivalente a imágenes, íconos, gráficos y diagramas.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:file-text" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Guion o transcripción</p>
+                            <p class="feature-card__desc">Incluir guion o transcripción del video de sustentación.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:type" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Contraste y tipografía</p>
+                            <p class="feature-card__desc">Usar contraste suficiente y tamaño de fuente legible en las infografías.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:eye-off" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Evitar fondos saturados</p>
+                            <p class="feature-card__desc">Evitar fondos saturados o textos sobre imágenes complejas.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:download" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Versión descargable</p>
+                            <p class="feature-card__desc">Incluir versión descargable de la presentación o resumen textual del contenido visual.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:settings-2" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Alternativa equivalente</p>
+                            <p class="feature-card__desc">Permitir alternativa equivalente en audio con transcripción o sustentación escrita ampliada si existe barrera de conectividad o accesibilidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-5 mt-6 border-l-4 border-unad-teal">
+                    <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+                        Tenga en cuenta que todos los productos escritos independientes o grupales deben cumplir con las normas de ortografía y con las condiciones de presentación que se hayan definido. En cuanto al uso de referencias, el producto de esta actividad debe cumplir con las normas APA. En cualquier caso, cumpla con las normas de referenciación y evite el plagio académico; para ello puede apoyarse revisando sus productos escritos mediante la herramienta Turnitin que encuentra en el campus virtual.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Situaciones académicas -->
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-red-500/10 text-red-500">
+                        <span class="iconify" data-icon="lucide:alert-triangle" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">
+                        <span class="text-unad-orange">5.</span> Situaciones de orden académico
+                    </h3>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8 border-l-4 border-red-500">
+                    <p class="text-sm md:text-base leading-relaxed text-gray-800 dark:text-gray-200 mb-6">
+                        Considere que en el acuerdo 029 del 13 de diciembre de 2013, artículo 99, se considera como faltas que atentan contra el orden académico, entre otras, las siguientes: literal e) "El plagiar, es decir, presentar como de su propia autoría la totalidad o parte de una obra, trabajo, documento o invención realizado por otra persona. Implica también el uso de citas o referencias faltas, o proponer citad donde no haya coincidencia entre ella y la referencia" y literal f) "El reproducir, o copiar con fines de lucro, materiales educativos o resultados de productos de investigación, que cuentan con derechos intelectuales reservados para la Universidad".
+                    </p>
+                    <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-3">Sanciones académicas</p>
+                    <ul class="space-y-3 text-sm text-gray-700 dark:text-gray-300">
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">a)</span><span>En los casos de fraude académico demostrado en el trabajo académico o evaluación respectiva, la calificación que se impondrá será de cero puntos sin perjuicio de la sanción disciplinaria correspondiente.</span></li>
+                        <li class="flex gap-3"><span class="text-red-500 font-bold">b)</span><span>En los casos relacionados con plagio demostrado en el trabajo académico cualquiera sea su naturaleza, la calificación que se impondrá será de cero puntos, sin perjuicio de la sanción disciplinaria correspondiente.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             VIEW: ANEXO 1
+        ============================================================= -->
+        <section id="view-anexo1" class="view">
+            <button class="back-btn mb-6" data-view="home" type="button">
+                <span class="iconify" data-icon="lucide:arrow-left" data-width="14"></span>
+                Volver al inicio
+            </button>
+
+            <div class="text-center mb-12">
+                <span class="pill pill--green mb-4">Documento 2</span>
+                <h2 class="font-display font-extrabold text-3xl md:text-5xl mb-4">
+                    Anexo 1 <span class="text-unad-orange">Plantilla Plan Integral</span>
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Plantillas para plan integral, presentación ejecutiva y sustentación audiovisual. Reto 3: Arquitectos de la salud animal.
+                </p>
+            </div>
+
+            <p class="intro-paragraph">
+                Este anexo contiene los formatos que el grupo debe diligenciar para organizar el trabajo colaborativo, formular el plan integral, diseñar la presentación ejecutiva y preparar la sustentación audiovisual. Las tablas pueden diligenciarse en este documento o reproducirse en el producto final.
+            </p>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:list-checks" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 1. Selección del sistema productivo</h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    El grupo debe trabajar preferiblemente el mismo sistema productivo del Reto 2. Si cambia, debe justificarlo y conservar coherencia con el RAC 2.
+                </p>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 1</p>
+                    <p class="italic text-unad-orange/90 text-sm">Opciones de sistema productivo para el Reto 3</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[800px]">
+                            <thead>
+                                <tr>
+                                    <th style="width:80px">Opción</th>
+                                    <th>Sistema productivo</th>
+                                    <th>Observación para el grupo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-bold text-unad-orange text-lg">A</td><td class="font-semibold">Bovino o bufalino</td><td>Adecuado para planes de bioseguridad, bienestar, leche/carne, movilización e inocuidad.</td></tr>
+                                <tr><td class="font-bold text-unad-orange text-lg">B</td><td class="font-semibold">Porcino</td><td>Adecuado para bioseguridad estricta, AMR, residuos, bienestar, ambiente y productividad.</td></tr>
+                                <tr><td class="font-bold text-unad-orange text-lg">C</td><td class="font-semibold">Ovino-caprino</td><td>Adecuado para sistemas territoriales, parasitismo, bienestar, manejo y sostenibilidad.</td></tr>
+                                <tr><td class="font-bold text-unad-orange text-lg">D</td><td class="font-semibold">Avícola de engorde</td><td>Adecuado para cama, densidad, bioseguridad, estrés calórico, indicadores e inocuidad.</td></tr>
+                                <tr><td class="font-bold text-unad-orange text-lg">E</td><td class="font-semibold">Equino</td><td>Adecuado para bienestar, movilización, manejo, vigilancia sanitaria y perfil profesional.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-orange/10 text-unad-orange">
+                        <span class="iconify" data-icon="lucide:users" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 2. Roles obligatorios para grupos de cinco estudiantes</h3>
+                </div>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 2</p>
+                    <p class="italic text-unad-orange/90 text-sm">Distribución de responsabilidades por integrante</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[1000px]">
+                            <thead>
+                                <tr>
+                                    <th>Integrante</th>
+                                    <th>Rol técnico</th>
+                                    <th>Producto individual verificable</th>
+                                    <th>Participación en video</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="font-semibold">Estudiante 1</td>
+                                    <td>Diagnóstico y priorización sanitaria.</td>
+                                    <td>Síntesis del sistema y riesgos priorizados.</td>
+                                    <td>Explica el problema sanitario y la prioridad elegida.</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">Estudiante 2</td>
+                                    <td>Bioseguridad y sanidad preventiva.</td>
+                                    <td>Protocolo de bioseguridad y acciones preventivas.</td>
+                                    <td>Presenta una acción de bioseguridad y su indicador.</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">Estudiante 3</td>
+                                    <td>Bienestar, manejo y productividad.</td>
+                                    <td>Acciones sobre bienestar, nutrición, manejo, reproducción/genética y productividad.</td>
+                                    <td>Relaciona bienestar con productividad y seguimiento.</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">Estudiante 4</td>
+                                    <td>Indicadores, registros y tecnologías emergentes.</td>
+                                    <td>Sistema de monitoreo con registros, indicadores y tecnología aplicable.</td>
+                                    <td>Explica la tecnología seleccionada y su uso.</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold">Estudiante 5</td>
+                                    <td>One Health, cambio climático, inocuidad, APA y accesibilidad.</td>
+                                    <td>Componente de clima, One Health/inocuidad, referencias APA y checklist DUA.</td>
+                                    <td>Explica articulación One Health, clima o inocuidad.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-green/10 text-unad-green">
+                        <span class="iconify" data-icon="lucide:grid-3x3" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 3. Matriz del plan integral</h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    El plan debe contener mínimo diez acciones: dos por cada componente técnico. Cada acción debe tener responsable, frecuencia, indicador, meta y fuente.
+                </p>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 3</p>
+                    <p class="italic text-unad-orange/90 text-sm">Matriz para formular acciones del plan integral</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[1200px]">
+                            <thead>
+                                <tr>
+                                    <th>Componente</th>
+                                    <th>Riesgo o problema</th>
+                                    <th>Acción propuesta</th>
+                                    <th>Responsable</th>
+                                    <th>Frecuencia</th>
+                                    <th>Indicador</th>
+                                    <th>Meta</th>
+                                    <th>ODS</th>
+                                    <th>Fuente APA breve</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-semibold">Diagnóstico y priorización</td><td></td><td></td><td></td><td></td><td></td><td></td><td>ODS 3</td><td></td></tr>
+                                <tr><td class="font-semibold">Bioseguridad</td><td></td><td></td><td></td><td></td><td></td><td></td><td>ODS 3</td><td></td></tr>
+                                <tr><td class="font-semibold">Bienestar</td><td></td><td></td><td></td><td></td><td></td><td></td><td>ODS 2 y 3</td><td></td></tr>
+                                <tr><td class="font-semibold">Tecnologías</td><td></td><td></td><td></td><td></td><td></td><td></td><td>ODS 2</td><td></td></tr>
+                                <tr><td class="font-semibold">One Health</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:video" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 4. Guion de la sustentación audiovisual</h3>
+                </div>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 4</p>
+                    <p class="italic text-unad-orange/90 text-sm">Estructura obligatoria del video de sustentación</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[900px]">
+                            <thead>
+                                <tr>
+                                    <th>Momento</th>
+                                    <th>Responsable</th>
+                                    <th>Contenido</th>
+                                    <th>Tiempo sugerido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-semibold">Apertura</td><td>Vocero del grupo</td><td>Nombre del reto, sistema productivo y propósito del plan.</td><td>30 segundos</td></tr>
+                                <tr><td class="font-semibold">Intervención 1</td><td>Estudiante 1</td><td>Problema sanitario priorizado y relación con el Reto 2.</td><td>45-60 segundos</td></tr>
+                                <tr><td class="font-semibold">Intervención 2</td><td>Estudiante 2</td><td>Acción principal de bioseguridad y su indicador.</td><td>45-60 segundos</td></tr>
+                                <tr><td class="font-semibold">Intervención 3</td><td>Estudiante 3</td><td>Acción de bienestar/manejo y efecto esperado en productividad.</td><td>45-60 segundos</td></tr>
+                                <tr><td class="font-semibold">Intervención 4</td><td>Estudiante 4</td><td>Tecnología o registro propuesto para seguimiento sanitario.</td><td>45-60 segundos</td></tr>
+                                <tr><td class="font-semibold">Intervención 5</td><td>Estudiante 5</td><td>Relación con One Health, clima o inocuidad, y fuente clave.</td><td>45-60 segundos</td></tr>
+                                <tr><td class="font-semibold">Cierre</td><td>Vocero o todo el grupo</td><td>Conclusión técnica: acción más urgente y meta esperada.</td><td>30-45 segundos</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-orange/10 text-unad-orange">
+                        <span class="iconify" data-icon="lucide:languages" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 5. Infografía bilingüe de transferencia técnica</h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    Una de las cinco infografías de la presentación ejecutiva debe ser bilingüe. Debe elaborarse con palabras propias a partir de la Resolución ICA 16409 de 2024, fuente oficial en español sobre bienestar animal en producción primaria pecuaria. No se permite copiar y pegar textos de fuentes en inglés ni presentar una traducción literal extensa realizada por herramienta automática.
+                </p>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 5</p>
+                    <p class="italic text-unad-orange/90 text-sm">Ficha de construcción lingüística para la infografía bilingüe</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[900px]">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%">Elemento</th>
+                                    <th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-semibold">Fuente base en español</td><td>Instituto Colombiano Agropecuario. (2024). <em>Resolución 16409 de 2024: requisitos para certificación en Bienestar Animal en la producción primaria pecuaria</em>.</td></tr>
+                                <tr><td class="font-semibold">Idea técnica seleccionada en español</td><td>Escriba la idea central tomada de la fuente. Ejemplo: bienestar animal en producción primaria, certificación, inspección, vigilancia o control.</td></tr>
+                                <tr><td class="font-semibold">Título técnico en inglés</td><td>Escriba un título entre 6 y 10 palabras. Ejemplo: <em>Animal welfare in primary livestock production</em>.</td></tr>
+                                <tr><td class="font-semibold">Explicación breve en inglés</td><td>Redacte entre 40 y 60 palabras con palabras propias. Debe explicar la idea técnica y su relación con el plan integral.</td></tr>
+                                <tr><td class="font-semibold">Glosario técnico inglés-español</td><td>Incluya cinco términos. Ejemplo: <em>animal welfare / bienestar animal; primary production / producción primaria</em>.</td></tr>
+                                <tr><td class="font-semibold">Aplicación al sistema productivo</td><td>Escriba dos frases en español sobre cómo se aplica el concepto al sistema productivo seleccionado.</td></tr>
+                                <tr><td class="font-semibold">Fuente APA 7</td><td>Incluya la referencia completa en APA 7.</td></tr>
+                                <tr><td class="font-semibold">Revisión de elaboración propia</td><td>Indique quién revisó que el texto no sea copiado, que sea comprensible y que mantenga lenguaje técnico.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:bar-chart-3" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 6. Indicadores mínimos de seguimiento</h3>
+                </div>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 6</p>
+                    <p class="italic text-unad-orange/90 text-sm">Banco orientador de indicadores para el plan</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[900px]">
+                            <thead>
+                                <tr>
+                                    <th>Dimensión</th>
+                                    <th>Indicadores sugeridos</th>
+                                    <th>Frecuencia sugerida</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-semibold">Sanitaria</td><td>Morbilidad, mortalidad, casos sospechosos, tratamientos, vacunación, parasitismo, aislamiento de animales.</td><td>Semanal, mensual o por ciclo productivo.</td></tr>
+                                <tr><td class="font-semibold">Bioseguridad</td><td>Ingresos controlados, cuarentenas cumplidas, limpieza y desinfección, control de visitantes, control de vectores.</td><td>Por lote, semana o evento de ingreso.</td></tr>
+                                <tr><td class="font-semibold">Bienestar animal</td><td>Condición corporal, lesiones, cojeras, acceso a agua y alimento, comportamiento, confort térmico, mortalidad asociada a manejo.</td><td>Semanal, mensual o por etapa productiva.</td></tr>
+                                <tr><td class="font-semibold">Productiva</td><td>Ganancia de peso, conversión alimenticia, postura, fertilidad, tasa de descarte, producción de leche/carne/huevos según sistema.</td><td>Por ciclo, lote o mes.</td></tr>
+                                <tr><td class="font-semibold">Inocuidad y One Health</td><td>Uso de medicamentos, tiempos de retiro, residuos, calidad de agua, eventos zoonóticos sospechosos, temperatura ambiente.</td><td>Mensual o por evento sanitario.</td></tr>
+                                <tr><td class="font-semibold">Tecnologías y registros</td><td>Registros completos, alertas atendidas, sensores operativos, datos revisados, decisiones tomadas con evidencia.</td><td>Semanal o mensual.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-green/10 text-unad-green">
+                        <span class="iconify" data-icon="lucide:file-text" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 7. Estructura mínima del documento técnico</h3>
+                </div>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 7</p>
+                    <p class="italic text-unad-orange/90 text-sm">Estructura sugerida del informe técnico del Reto 3</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[900px]">
+                            <thead>
+                                <tr>
+                                    <th style="width:32%">Sección</th>
+                                    <th>Contenido</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="font-semibold">Portada</td><td>Curso, código, reto, grupo, nombres, códigos, CEAD, tutor y fecha.</td></tr>
+                                <tr><td class="font-semibold">Introducción</td><td>Propósito del plan, sistema productivo seleccionado y relevancia sanitaria.</td></tr>
+                                <tr><td class="font-semibold">Descripción del sistema productivo</td><td>Especie, orientación productiva, condiciones generales y riesgos principales.</td></tr>
+                                <tr><td class="font-semibold">Síntesis del problema sanitario</td><td>Relación con hallazgos del Reto 2 o justificación de riesgos priorizados.</td></tr>
+                                <tr><td class="font-semibold">Plan integral</td><td>Matriz con acciones, indicadores, responsables, frecuencia, meta y fuente.</td></tr>
+                                <tr><td class="font-semibold">Alineación con ODS 2 y 3</td><td>Tabla que especifica cómo cada acción del plan contribuye a las metas de los Objetivos de Desarrollo Sostenible 2 (Hambre Cero) y 3 (Salud y Bienestar).</td></tr>
+                                <tr><td class="font-semibold">Ruta de implementación</td><td>Orden de acciones, tiempos, responsables y criterios de seguimiento.</td></tr>
+                                <tr><td class="font-semibold">Presentación ejecutiva</td><td>Enlace funcional a cinco infografías accesibles, incluida una infografía bilingüe.</td></tr>
+                                <tr><td class="font-semibold">Infografía bilingüe</td><td>Ficha de construcción lingüística con idea base en español, explicación en inglés, glosario y aplicación al sistema productivo.</td></tr>
+                                <tr><td class="font-semibold">Sustentación audiovisual</td><td>Enlace al video/audio y guion o transcripción.</td></tr>
+                                <tr><td class="font-semibold">Conclusiones</td><td>Tres a cinco conclusiones técnicas sobre prevención, bienestar, productividad y sostenibilidad.</td></tr>
+                                <tr><td class="font-semibold">Referencias</td><td>Fuentes obligatorias y adicionales en APA 7, incluida la Resolución ICA 16409 de 2024.</td></tr>
+                                <tr><td class="font-semibold">Anexos</td><td>Evidencias de foro, checklist DUA/accesibilidad y soporte de participación.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-orange/10 text-unad-orange">
+                        <span class="iconify" data-icon="lucide:check-square" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Anexo 8. Lista de chequeo DUA, accesibilidad y calidad final</h3>
+                </div>
+
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 8</p>
+                    <p class="italic text-unad-orange/90 text-sm">Lista de verificación antes de entregar el Reto 3</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[800px]">
+                            <thead>
+                                <tr>
+                                    <th>Criterio</th>
+                                    <th style="width:110px; text-align:center">Sí / No</th>
+                                    <th style="width:180px">Observación</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>El documento incluye las fuentes obligatorias de la guía y las usa dentro del texto (se citan al menos dos referentes internacionales vigentes que respalden las acciones propuestas).</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Cada estudiante publicó aporte individual, ficha de lectura y revisión cruzada en foro.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>El plan contiene mínimo diez acciones, dos por componente.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Cada acción tiene responsable, frecuencia, indicador y meta.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>La presentación tiene cinco infografías, una por componente estratégico.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>El plan incluye tabla de alineación con ODS 2 y 3.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>El documento evidencia el enfoque Una Salud en la formulación del plan.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Una infografía es bilingüe y se construyó a partir de la Resolución ICA 16409 de 2024.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>La infografía bilingüe incluye título en inglés, explicación de 40 a 60 palabras, glosario, aplicación al sistema y fuente APA 7.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>El video dura entre 5 y 7 minutos y participan los cinco integrantes.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>El video tiene guion o transcripción.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Las imágenes, íconos o gráficos tienen texto alternativo o explicación equivalente.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>La presentación usa contraste suficiente y no depende solo del color.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Los enlaces de presentación y video abren correctamente.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Todas las tablas tienen título en estilo APA 7.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                                <tr><td>Las citas coinciden con las referencias finales.</td><td class="text-center text-gray-400">☐</td><td></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:quote" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Referencias de apoyo del anexo</h3>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8 space-y-5">
+                    <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 pl-4 border-l-2 border-unad-teal">
+                        Instituto Colombiano Agropecuario. (2024). <em>Resolución 16409 de 2024: Por la cual se establecen los requisitos para la certificación en Bienestar Animal en la producción primaria pecuaria y se dictan disposiciones relacionadas con las actividades de Inspección, Vigilancia y Control en Bienestar Animal</em>. ICA. https://www.ica.gov.co/normatividad/normas-ica/resoluciones-oficinas-nacionales/2024/2024r00016409
+                    </p>
+                    <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 pl-4 border-l-2 border-unad-teal">
+                        CAST. (2024). <em>Universal Design for Learning Guidelines 3.0</em>. https://udlguidelines.cast.org/
+                    </p>
+                    <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200 pl-4 border-l-2 border-unad-teal">
+                        World Wide Web Consortium. (2023). <em>Web Content Accessibility Guidelines (WCAG) 2.2</em>. https://www.w3.org/TR/WCAG22/
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             VIEW: ANEXO 2 — RUTA INDIVIDUAL
+        ============================================================= -->
+        <section id="view-anexo2" class="view">
+            <button class="back-btn mb-6" data-view="home" type="button">
+                <span class="iconify" data-icon="lucide:arrow-left" data-width="14"></span>
+                Volver al inicio
+            </button>
+
+            <div class="text-center mb-12">
+                <span class="pill pill--orange mb-4">Documento 3</span>
+                <h2 class="font-display font-extrabold text-3xl md:text-5xl mb-4">
+                    Anexo 2 <span class="text-unad-orange">Ruta Individual Excepcional</span>
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Ruta individual excepcional por contingencia académica justificada. Reto 3.
+                </p>
+            </div>
+
+            <p class="intro-paragraph">
+                El Reto 3 en su ruta individual considera que el estudiante debe formular un plan completo, pero con menor número de enfermedades.
+            </p>
+
+            <div class="glass-panel p-6 md:p-8 mb-8 border-l-4 border-unad-orange">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="iconify text-unad-orange" data-icon="lucide:compass" data-width="22"></span>
+                    <p class="font-display font-bold text-lg">Ruta individual excepcional equivalente</p>
+                </div>
+                <p class="intro-paragraph mb-0">
+                    Esta opción es exclusiva para casos justificados oportunamente y con los debidos sustentos. No debe ser una vía libre para evitar el trabajo colaborativo, sino una ruta formal dada particularidades que impiden el adecuado aporte.
+                </p>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:alert-circle" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Cuándo aplica</h3>
+                </div>
+
+                <p class="intro-paragraph">Puede aplicarse cuando el estudiante presente una situación documentada como:</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:wifi-off" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Conectividad limitada</p>
+                            <p class="feature-card__desc">Conectividad limitada persistente.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:heart-pulse" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Fuerza mayor</p>
+                            <p class="feature-card__desc">Fuerza mayor familiar, laboral o de salud.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:map-pin-off" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Aislamiento geográfico</p>
+                            <p class="feature-card__desc">Aislamiento geográfico o imposibilidad de interacción sostenida.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:user-x" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Ausencia del grupo</p>
+                            <p class="feature-card__desc">Ausencia comprobada de los demás integrantes.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:messages-square" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Conflicto grupal</p>
+                            <p class="feature-card__desc">Conflicto grupal reportado oportunamente y no resuelto.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:clock" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Ingreso tardío</p>
+                            <p class="feature-card__desc">Ingreso tardío autorizado al curso.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card md:col-span-2">
+                        <div class="feature-card__icon">
+                            <span class="iconify" data-icon="lucide:shield-check" data-width="22"></span>
+                        </div>
+                        <div>
+                            <p class="feature-card__title">Situación especial validada</p>
+                            <p class="feature-card__desc">Situación especial validada por el tutor o programa.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-green/10 text-unad-green">
+                        <span class="iconify" data-icon="lucide:check-circle-2" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Condiciones</h3>
+                </div>
+
+                <ul class="lista-tecnica text-sm text-gray-700 dark:text-gray-300">
+                    <li>El estudiante debe informar la situación durante las <strong>dos (2) primeras semanas</strong> en la que se abre la actividad; no se permitirá el último día.</li>
+                    <li>Debe dejar evidencia en el <strong>foro y correo interno del curso</strong>.</li>
+                    <li>El tutor debe <strong>aprobar la ruta individual</strong>.</li>
+                    <li>El producto debe evaluar el <strong>mismo RAC</strong>.</li>
+                    <li>La rúbrica debe conservar los criterios técnicos, pero adaptar el criterio de trabajo colaborativo por uno de <strong>trazabilidad, autonomía y cumplimiento de cortes</strong>, que para este caso serían <strong>4 (cuatro) enfermedades</strong> para analizar.</li>
+                </ul>
+            </div>
+
+            <div class="mb-14">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="icon-tile bg-unad-teal/10 text-unad-teal dark:text-white">
+                        <span class="iconify" data-icon="lucide:package-check" data-width="24"></span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl md:text-3xl">Entregable individual equivalente recomendado</h3>
+                </div>
+
+                <p class="intro-paragraph">
+                    Documento técnico individual con plan de gestión sanitaria y bienestar animal con presentación ejecutiva o infografía síntesis, sustentada a partir de video. El plan debe alinearse con los Objetivos de Desarrollo Sostenible 2 y 3 y sustentarse en el enfoque Una Salud, citando al menos dos referentes internacionales vigentes (uno en inglés).
+                </p>
+
+                <div class="glass-panel p-6 md:p-8 mb-6">
+                    <p class="text-[10px] uppercase tracking-[0.15em] text-unad-orange font-bold mb-4">Debe incluir:</p>
+                    <ul class="lista-tecnica text-sm text-gray-700 dark:text-gray-300">
+                        <li>Caracterización breve de la unidad productiva.</li>
+                        <li>Protocolo de bioseguridad.</li>
+                        <li>Acciones de bienestar animal.</li>
+                        <li>Estrategia de seguimiento sanitario e indicadores.</li>
+                        <li>Propuesta de tecnología o registro digital aplicable.</li>
+                        <li>Medidas frente a cambio climático o riesgo sanitario.</li>
+                        <li>Plan de mejora priorizado.</li>
+                    </ul>
+                </div>
+
+                <div class="glass-panel p-6 md:p-8 border-l-4 border-unad-orange">
+                    <p class="text-sm leading-relaxed text-gray-800 dark:text-gray-200">
+                        La sustentación será a través de un <strong>video de 3 a 5 minutos</strong> o una presentación narrada con guion/transcripción. Lo que permitirá evidenciar <strong>Comunicación Escrita, Lectura Crítica y capacidad de comunicar decisiones técnicas</strong>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             VIEW: RÚBRICA
+        ============================================================= -->
+        <section id="view-rubrica" class="view">
+            <button class="back-btn mb-6" data-view="home" type="button">
+                <span class="iconify" data-icon="lucide:arrow-left" data-width="14"></span>
+                Volver al inicio
+            </button>
+
+            <div class="text-center mb-12">
+                <span class="pill pill--teal mb-4">Documento 4</span>
+                <h2 class="font-display font-extrabold text-3xl md:text-5xl mb-4">
+                    Rúbrica de <span class="text-unad-orange">Evaluación Reto 3</span>
+                </h2>
+                <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                    Salud Animal. Código: 201203. Programa: Zootecnia – Tecnología en Producción Animal.
+                </p>
+            </div>
+
+            <p class="intro-paragraph">
+                Esta rúbrica valora el logro del resultado de aprendizaje a partir de evidencias observables. Los niveles alto, medio, bajo y no presentado describen condiciones verificables del desempeño para evitar interpretaciones ambiguas en la evaluación.
+            </p>
+
+            <div class="mb-10">
+                <div class="mb-4">
+                    <p class="font-display font-bold text-unad-navy dark:text-white">Tabla 1</p>
+                    <p class="italic text-unad-orange/90 text-sm">Rúbrica de evaluación</p>
+                </div>
+
+                <div class="glass-panel overflow-hidden">
+                    <div class="overflow-x-auto custom-scroll">
+                        <table class="styled-table min-w-[800px]">
+                            <tbody>
+                                <tr>
+                                    <td class="font-bold text-unad-teal dark:text-unad-orange" style="width:35%">Resultado de aprendizaje:</td>
+                                    <td>Diseñar estrategias de gestión sanitaria y bienestar animal en una unidad productiva, integrando bioseguridad, seguimiento sanitario, tecnologías emergentes y recomendaciones de mejora, mediante un documento técnico estructurado que organice hallazgos, propuestas y criterios de implementación.</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-unad-teal dark:text-unad-orange">Tipo de actividad:</td>
+                                    <td>Colaborativa, con aportes individuales verificables en foro, presentación ejecutiva accesible y sustentación audiovisual breve.</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-bold text-unad-teal dark:text-unad-orange">Puntaje de la actividad:</td>
+                                    <td><span class="score-chip"><span class="iconify" data-icon="lucide:star" data-width="12"></span> 100 puntos</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 md:p-8 mb-6 border-l-4 border-unad-teal hover-card">
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+                    <h4 class="font-display font-bold text-xl md:text-2xl text-unad-navy dark:text-white">
+                        <span class="text-unad-orange">1er criterio.</span> Participación, trazabilidad y corresponsabilidad académica en el foro
+                    </h4>
+                    <span class="score-chip">15 pts</span>
+                </div>
+
+                <div class="mt-5">
+                    <div class="level-row level-row--high">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2">Nivel alto · 12 a 15 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Participa oportunamente en los cortes definidos; evidencia rol asignado, ficha de lectura, aporte individual al componente estratégico, revisión a un compañero, acuerdos de integración, avance del plan, aporte a la presentación, participación en la sustentación y apoyo verificable a la infografía bilingüe cuando corresponda. Su contribución se integra de forma visible en el producto final. En ruta individual excepcional aprobada, evidencia comunicación oportuna, avances progresivos y cumplimiento autónomo.</p>
+                    </div>
+                    <div class="level-row level-row--mid">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-teal dark:text-unad-orange font-bold mb-2">Nivel medio · 9 a 11 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Participa y realiza aportes relacionados con el plan, pero algún corte está incompleto, la revisión a compañeros es limitada o la integración de su aporte al producto es parcial. La responsabilidad individual es identificable, aunque requiere mayor solidez. En ruta individual, presenta trazabilidad parcial.</p>
+                    </div>
+                    <div class="level-row level-row--low">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-red-500 font-bold mb-2">Nivel bajo · 1 a 8 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Participa de forma tardía, insuficiente o sin relación clara con el producto. No evidencia revisión, acuerdos ni aportes suficientes para comprobar corresponsabilidad académica; la participación se concentra al final de la actividad o no se articula con la infografía bilingüe, presentación o sustentación.</p>
+                    </div>
+                    <div class="level-row level-row--none">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-gray-500 font-bold mb-2">Nivel no presentado · 0 puntos</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">No participa en el foro, no presenta aportes verificables ni tiene ruta individual excepcional aprobada.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 md:p-8 mb-6 border-l-4 border-unad-teal hover-card">
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+                    <h4 class="font-display font-bold text-xl md:text-2xl text-unad-navy dark:text-white">
+                        <span class="text-unad-orange">2º criterio.</span> Desarrollo del procedimiento y construcción progresiva del plan integral
+                    </h4>
+                    <span class="score-chip">20 pts</span>
+                </div>
+
+                <div class="mt-5">
+                    <div class="level-row level-row--high">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2">Nivel alto · 16 a 20 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Sigue el paso a paso de la guía y del anexo: selecciona una unidad productiva válida, distribuye cinco componentes entre los integrantes, construye la matriz de planificación, define problemas prioritarios, acciones, responsables, indicadores, tiempos y medios de verificación. Integra de manera progresiva los insumos del Reto 2 y desarrolla la ficha de construcción lingüística para la infografía bilingüe a partir de la fuente base en español definida en la guía.</p>
+                    </div>
+                    <div class="level-row level-row--mid">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-teal dark:text-unad-orange font-bold mb-2">Nivel medio · 12 a 15 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Sigue el procedimiento general, pero presenta vacíos menores en la progresión del plan, distribución de componentes, definición de indicadores, articulación con el Reto 2 o construcción de la infografía bilingüe. La propuesta es pertinente, aunque algunos elementos requieren mayor precisión operativa.</p>
+                    </div>
+                    <div class="level-row level-row--low">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-red-500 font-bold mb-2">Nivel bajo · 1 a 11 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El procedimiento es incompleto, no usa adecuadamente el anexo, omite componentes exigidos, no evidencia construcción progresiva, presenta acciones desconectadas del sistema productivo o no desarrolla de forma verificable la ficha de construcción lingüística de la infografía bilingüe.</p>
+                    </div>
+                    <div class="level-row level-row--none">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-gray-500 font-bold mb-2">Nivel no presentado · 0 puntos</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">No presenta evidencia del procedimiento ni de construcción del plan integral.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 md:p-8 mb-6 border-l-4 border-unad-orange hover-card">
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+                    <h4 class="font-display font-bold text-xl md:text-2xl text-unad-navy dark:text-white">
+                        <span class="text-unad-orange">3er criterio.</span> Calidad técnica del plan integral, presentación ejecutiva y sustentación audiovisual
+                    </h4>
+                    <span class="score-chip">40 pts</span>
+                </div>
+
+                <div class="mt-5">
+                    <div class="level-row level-row--high">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2">Nivel alto · 32 a 40 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El plan integral es contextualizado, viable y técnicamente sólido. Incluye bioseguridad, bienestar animal, sanidad preventiva, inocuidad, tecnologías emergentes, cambio climático, indicadores zootécnicos y seguimiento, alineado explícitamente con los Objetivos de Desarrollo Sostenible 2 y 3 y sustentado en el enfoque Una Salud con al menos dos referentes internacionales vigentes. La presentación ejecutiva contiene cinco infografías claras y accesibles; una de ellas es bilingüe, elaborada con palabras propias a partir de la Resolución ICA 16409 de 2024, con título técnico en inglés, explicación de 40 a 60 palabras en inglés, glosario técnico inglés-español, aplicación al sistema productivo y referencia APA 7. La sustentación audiovisual de 5 a 7 minutos verifica comprensión individual, síntesis del plan y participación de todos los integrantes, con guion o transcripción.</p>
+                    </div>
+                    <div class="level-row level-row--mid">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-teal dark:text-unad-orange font-bold mb-2">Nivel medio · 24 a 31 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El plan aborda los componentes principales, pero alguno queda superficial, poco articulado o con indicadores débiles. La presentación es comprensible, aunque con detalles de diseño o accesibilidad por mejorar. La infografía bilingüe está presente, pero requiere mayor elaboración propia, precisión técnica, glosario completo, aplicación al sistema o citación. La sustentación cumple parcialmente duración, participación o claridad argumentativa.</p>
+                    </div>
+                    <div class="level-row level-row--low">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-red-500 font-bold mb-2">Nivel bajo · 1 a 23 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El plan es genérico, fragmentado o poco viable; omite componentes centrales como bioseguridad, bienestar, tecnologías, indicadores o cambio climático. La presentación no sintetiza adecuadamente el plan, la infografía bilingüe está ausente o parece traducción literal/copia y pegada, o la sustentación no permite verificar comprensión y participación.</p>
+                    </div>
+                    <div class="level-row level-row--none">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-gray-500 font-bold mb-2">Nivel no presentado · 0 puntos</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">No presenta plan integral, presentación ejecutiva ni sustentación audiovisual.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 md:p-8 mb-6 border-l-4 border-unad-teal hover-card">
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+                    <h4 class="font-display font-bold text-xl md:text-2xl text-unad-navy dark:text-white">
+                        <span class="text-unad-orange">4º criterio.</span> Comunicación escrita técnica, síntesis y sustentación argumentada
+                    </h4>
+                    <span class="score-chip">15 pts</span>
+                </div>
+
+                <div class="mt-5">
+                    <div class="level-row level-row--high">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2">Nivel alto · 12 a 15 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El documento, la presentación y la sustentación presentan ideas organizadas, lenguaje técnico preciso, argumentación clara, conclusiones accionables y recomendaciones coherentes con los riesgos priorizados. La escritura demuestra Comunicación Escrita Nivel 2 mediante estructura, posición técnica, justificación y síntesis. El texto en inglés de la infografía bilingüe es claro, breve, pertinente y construido con palabras propias a partir de la fuente base en español, demostrando capacidad de transferencia técnica bilingüe.</p>
+                    </div>
+                    <div class="level-row level-row--mid">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-teal dark:text-unad-orange font-bold mb-2">Nivel medio · 9 a 11 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">El documento y la sustentación son comprensibles, pero presentan transiciones débiles, repeticiones, conclusiones generales o argumentos que no siempre conectan con indicadores y acciones propuestas. El texto en inglés es comprensible, aunque con errores menores de vocabulario, precisión o fluidez.</p>
+                    </div>
+                    <div class="level-row level-row--low">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-red-500 font-bold mb-2">Nivel bajo · 1 a 8 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">La redacción o sustentación es confusa, desordenada o excesivamente descriptiva. No se evidencian argumentos técnicos suficientes, las conclusiones no orientan acciones o el lenguaje no corresponde al nivel profesional esperado. El texto en inglés es incompleto, literal, incoherente o no se relaciona con la fuente base.</p>
+                    </div>
+                    <div class="level-row level-row--none">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-gray-500 font-bold mb-2">Nivel no presentado · 0 puntos</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">No presenta texto o sustentación evaluable para valorar la comunicación técnica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel p-6 md:p-8 mb-6 border-l-4 border-unad-teal hover-card">
+                <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+                    <h4 class="font-display font-bold text-xl md:text-2xl text-unad-navy dark:text-white">
+                        <span class="text-unad-orange">5º criterio.</span> Uso de fuentes obligatorias, APA 7, accesibilidad y presentación formal
+                    </h4>
+                    <span class="score-chip">10 pts</span>
+                </div>
+
+                <div class="mt-5">
+                    <div class="level-row level-row--high">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-green font-bold mb-2">Nivel alto · 8 a 10 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Usa las fuentes obligatorias de la guía, incorpora fuentes en inglés y español evidenciando el enfoque Una Salud y la alineación con los Objetivos de Desarrollo Sostenible 2 y 3, cita correctamente dentro del texto y referencia en APA 7. Incluye la Resolución ICA 16409 de 2024 como fuente base de la infografía bilingüe y conserva correspondencia entre citas y referencias. La presentación y el documento incluyen portada, enlaces funcionales, guion o transcripción, texto alternativo o descripción equivalente, contraste adecuado, tablas tituladas en APA 7 y formato solicitado. El contenido evidencia elaboración propia y uso ético de la información.</p>
+                    </div>
+                    <div class="level-row level-row--mid">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-unad-teal dark:text-unad-orange font-bold mb-2">Nivel medio · 6 a 7 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Usa fuentes pertinentes, pero omite alguna obligatoria o presenta errores menores de APA 7. La presentación, la infografía bilingüe y el documento son utilizables, aunque requieren mejorar accesibilidad, enlaces, ortografía, correspondencia entre citas y referencias o consistencia formal.</p>
+                    </div>
+                    <div class="level-row level-row--low">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-red-500 font-bold mb-2">Nivel bajo · 1 a 5 puntos</p>
+                        <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">Usa pocas fuentes o fuentes no actualizadas; presenta errores frecuentes de citación y referencias; omite la fuente base de la infografía bilingüe; los enlaces no funcionan; falta transcripción o existen problemas importantes de accesibilidad y presentación.</p>
+                    </div>
+                    <div class="level-row level-row--none">
+                        <p class="text-[10px] uppercase tracking-[0.15em] text-gray-500 font-bold mb-2">Nivel no presentado · 0 puntos</p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">No presenta fuentes, referencias, enlaces funcionales o condiciones mínimas de presentación.</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================= -->
+<footer class="site-footer">
+    <div class="footer-card">
+        <div class="relative z-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 text-center md:text-left">
+            <div class="footer-avatar">DS</div>
+            <div class="flex-1">
+                <p class="footer-role mb-3">
+                    <span class="iconify" data-icon="lucide:graduation-cap" data-width="12"></span>
+                    Docente
+                </p>
+                <h3 class="font-display font-extrabold text-2xl md:text-3xl text-white mb-1">
+                    David Leonardo Sanabria Garcia
+                </h3>
+                <p class="text-sm text-white/75 mb-4">
+                    Tutor Curso Salud Animal
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                    <a href="mailto:david.sanabria@unad.edu.co" class="footer-mail">
+                        <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
+                        david.sanabria@unad.edu.co
+                    </a>
+                    <span class="footer-mail" style="cursor:default;">
+                        <span class="iconify" data-icon="lucide:message-square" data-width="16"></span>
+                        Correo / Teams
+                    </span>
+                </div>
+            </div>
+            <div class="hidden md:flex flex-col items-end gap-2 text-white/60 text-xs uppercase tracking-[0.15em]">
+                <span class="font-display font-bold text-white/80">UNAD</span>
+                <span>ECAPMA</span>
+                <span>Salud Animal</span>
+                <span>201203</span>
+            </div>
+        </div>
+        <div class="relative z-10 mt-6 pt-5 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-[10px] uppercase tracking-[0.2em] text-white/50">
+            <span>Universidad Nacional Abierta y a Distancia</span>
+            <span>Reto 3 · 2026</span>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPT — Sin onclick inline, todo por event delegation
+============================================================= -->
+<script>
+(function () {
+    'use strict';
+
+    // ---- 1. showView global (por si algún onclick inline lo llama) ----
+    window.showView = function (viewId) {
+        var views = document.querySelectorAll('.view');
+        for (var i = 0; i < views.length; i++) {
+            views[i].classList.remove('active');
+        }
+        var target = document.getElementById('view-' + viewId);
+        if (target) target.classList.add('active');
+
+        var navButtons = document.querySelectorAll('.sitenav__links button');
+        for (var j = 0; j < navButtons.length; j++) {
+            navButtons[j].classList.toggle('active', navButtons[j].getAttribute('data-view') === viewId);
+        }
+
+        var navLinks = document.getElementById('nav-links');
+        if (navLinks) navLinks.classList.remove('mobile-open');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // ---- 2. Delegated click handler para todo [data-view] ----
+    document.addEventListener('click', function (e) {
+        var el = e.target.closest ? e.target.closest('[data-view]') : null;
+        if (el) {
+            e.preventDefault();
+            window.showView(el.getAttribute('data-view'));
+        }
+    });
+
+    // ---- 3. Theme toggle + mobile menu ----
+    document.addEventListener('DOMContentLoaded', function () {
+        var root = document.documentElement;
+        var themeBtn = document.getElementById('theme-btn');
+
+        function syncTheme() {
+            var isDark = root.classList.contains('dark');
+            if (themeBtn) {
+                themeBtn.textContent = isDark ? '☀️' : '🌙';
+                themeBtn.setAttribute('aria-label', isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+            }
+        }
+        syncTheme();
+
+        if (themeBtn) {
+            themeBtn.addEventListener('click', function () {
+                var willBeDark = !root.classList.contains('dark');
+                root.classList.toggle('dark', willBeDark);
+                root.classList.toggle('light', !willBeDark);
+                try { localStorage.setItem('unad-theme', willBeDark ? 'dark' : 'light'); } catch (e) {}
+                syncTheme();
+            });
+        }
+
+        var menuBtn = document.getElementById('menu-btn');
+        var navLinks = document.getElementById('nav-links');
+        if (menuBtn && navLinks) {
+            menuBtn.addEventListener('click', function () {
+                navLinks.classList.toggle('mobile-open');
+            });
+        }
+    });
+})();
+</script>
+</body>
+</html>
